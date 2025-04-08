@@ -1,66 +1,52 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🔐 Gerenciador de Tokens com Laravel Sanctum e Filament
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Este projeto é uma aplicação desenvolvida com **Laravel 12**, utilizando **Laravel Sanctum** para autenticação via tokens de API e **Filament PHP** como painel administrativo.
 
-## About Laravel
+O foco principal do projeto é permitir a criação, visualização e gerenciamento de tokens personalizados para consumo seguro de APIs, com uma interface amigável e moderna.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 🎯 Motivação
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Este projeto foi criado para estudo e prática das autenticações baseadas em token, além de explorar os recursos avançados do Filament para gerenciamento de dados de forma segura e elegante.
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## ⚙️ Tecnologias Utilizadas
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- **Laravel 12** — framework robusto e produtivo para desenvolvimento backend
+- **Sanctum** — autenticação via tokens com escopos e expiração configurável
+- **Filament PHP** — painel administrativo reativo e personalizável
+- **SQLite** — banco de dados leve e fácil de configurar para ambientes locais
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+---
 
-## Laravel Sponsors
+## 🧩 Funcionalidades Técnicas
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+- Criação de tokens de acesso via painel administrativo
+- Definição de permissões customizadas (abilities)
+- Data de expiração opcional por token
+- Exibição do token gerado diretamente na interface, com botão de **cópia para área de transferência**
+- Relação direta entre usuários e seus tokens (via `RelationManager`)
+- Notificações visuais para feedback imediato do usuário
 
-### Premium Partners
+---
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+## 🔐 Segurança
 
-## Contributing
+- Os tokens gerados são exibidos **somente no momento da criação**, seguindo as boas práticas do Laravel Sanctum
+- O valor armazenado no banco é um hash criptografado, não sendo possível descriptografar posteriormente
+- A implementação segue o princípio de **privacidade mínima** dos dados sensíveis
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+---
 
-## Code of Conduct
+## 📌 Observações
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+- O projeto utiliza o `RelationManager` para vincular tokens diretamente a cada usuário, facilitando o controle e visualização por parte do administrador.
 
-## Security Vulnerabilities
+---
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## 🤝 Contribuições
 
-## License
+Este projeto é pessoal e está em constante evolução. Sugestões são bem-vindas!
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).

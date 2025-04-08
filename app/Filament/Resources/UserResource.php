@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\UserResource\Pages;
 use App\Filament\Resources\UserResource\RelationManagers;
+use App\Filament\Resources\UserResource\RelationManagers\TokensRelationManager;
 use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -16,7 +17,8 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class UserResource extends Resource
 {
     protected static ?string $model = User::class;
-
+    protected static ?string $modelLabel = 'usuário';
+    protected static ?string $pluralModelLabel = 'usuários';
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
@@ -24,14 +26,9 @@ class UserResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('name')
-                    ->required(),
-                Forms\Components\TextInput::make('email')
-                    ->email()
-                    ->required(),
-                Forms\Components\DateTimePicker::make('email_verified_at'),
-                Forms\Components\TextInput::make('password')
-                    ->password()
-                    ->required(),
+                    ->required()
+                    ->readOnly(),
+                Forms\Components\TextInput::make('email')->email()->readOnly(),
             ]);
     }
 
@@ -43,17 +40,6 @@ class UserResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('email')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('email_verified_at')
-                    ->dateTime()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //
@@ -71,7 +57,7 @@ class UserResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            TokensRelationManager::class,
         ];
     }
 

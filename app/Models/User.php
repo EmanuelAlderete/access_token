@@ -6,7 +6,7 @@ namespace App\Models;
 
 use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -56,8 +56,8 @@ class User extends Authenticatable
         return str_ends_with($this->email, '@admin.com');
     }
 
-    public function tokens(): HasMany
+    public function tokens(): MorphMany
     {
-        return $this->hasMany(PersonalAccessToken::class, 'tokenable_id');
+        return $this->MorphMany(PersonalAccessToken::class, 'tokenable');
     }
 }
